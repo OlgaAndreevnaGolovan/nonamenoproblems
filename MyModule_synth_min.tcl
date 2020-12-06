@@ -23,3 +23,4 @@ write_hdl -mapped > ../Source/Synthesis/Filter_synth_min.v
 write_sdc > ../Source/Synthesis/Filter_out_min.sdc
 gui_show
 
+
