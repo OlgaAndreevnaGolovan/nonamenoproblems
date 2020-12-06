@@ -28,3 +28,4 @@ set_clock_uncertainty $CLOCK_UNCERTAINTY_CLK [get_clocks {clk}]
 set_input_delay  -clock "clk"       -max $INPUT_DELAY_CLK  $INPUTPORTS_CLK
 set_output_delay -clock "clk"       -max $OUTPUT_DELAY_CLK $OUTPUTPORTS_CLK
 
+
