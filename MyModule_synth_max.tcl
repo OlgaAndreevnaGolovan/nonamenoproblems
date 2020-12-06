@@ -23,3 +23,4 @@ write_hdl -mapped > ../Source/Synthesis/Filter_synth_max.v
 write_sdc > ../Source/Synthesis/Filter_out_max.sdc
 gui_show
 
+
