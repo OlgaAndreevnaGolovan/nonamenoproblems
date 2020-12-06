@@ -9,3 +9,4 @@ set_attribute cap_table_file /Cadence/Libs/X_FAB/XKIT/xt018/cadence/v5_0/capTbl/
 ## Setup error on blackbox
 set_attribute hdl_error_on_blackbox true
 
+
