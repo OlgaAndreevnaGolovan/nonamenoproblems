@@ -18,9 +18,9 @@ synthesize -incremental
 report area > ../Reports/Filter_synth_area_report
 report timing > ../Reports/Filter_synth_timing_report
 ## Write out synthesized Verilog netlist
-write_hdl -mapped > ../Outputs/Synthesis/Filter_synth.v
+write_hdl -mapped > ../Outputs/Filter_synth.v
 ## Write out the SDC file we will take into the place n route tool
-write_sdc > ../Outputs/Synthesis/Filter_out.sdc
+write_sdc > ../Outputs/Filter_out.sdc
 gui_show
 
 
