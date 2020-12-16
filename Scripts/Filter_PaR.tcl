@@ -27,7 +27,7 @@ set init_design_settop 0
 set init_gnd_net VSS
 set init_io_file ../Source/Module_pins
 set init_lef_file {/Cadence/Libs/X_FAB/XKIT/xt018/cadence/v5_0/techLEF/v5_0_2/xt018_xx43_MET4_METMID_METTHK.lef /Cadence/Libs/X_FAB/XKIT/xt018/diglibs/D_CELLS_HD/v4_0/LEF/v4_0_0/xt018_D_CELLS_HD.lef}
-set init_mmmc_file ../Scripts/MMMC1.tcl
+set init_mmmc_file ../Scripts/MMMC.tcl
 set init_pwr_net VDD
 set init_verilog ../Outputs/Filter_synth.v
 set lsgOCPGainMult 1.000000
