@@ -41,7 +41,6 @@ init_design
 # Specify Floorplan
 floorPlan -site core_hd -r 0.980859865639 0.699997 10.0 10.0 10.0 10.0
 #Defining Power Global Nets
-clearGlobalNets
 globalNetConnect VDD -type pgpin -pin vdd -inst * -module {}
 globalNetConnect VDD -type tiehi -pin * -inst * -module {}
 globalNetConnect VSS -type pgpin -pin gnd -inst * -module {}
