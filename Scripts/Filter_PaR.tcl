@@ -158,9 +158,9 @@ all_hold_analysis_views
 all_setup_analysis_views 
 #write outputs files
 write_sdf ../Outputs/Filter.sdf
-saveNetlist Outputs/Filter_netlist.v
+saveNetlist ../Outputs/Filter_netlist.v
 getFillerMode -quiet
-saveNetlist Outputs/Filter_physical_netlist.v -includePhysicalCell {FEED7HD FEED5HD FEED3HD FEED2HD FEED25HD FEED1HD FEED15HD FEED10HD DECAP7HD DECAP5HD DECAP3HD DECAP25HD DECAP15HD DECAP10HD}
+saveNetlist ../Outputs/Filter_physical_netlist.v -includePhysicalCell {FEED7HD FEED5HD FEED3HD FEED2HD FEED25HD FEED1HD FEED15HD FEED10HD DECAP7HD DECAP5HD DECAP3HD DECAP25HD DECAP15HD DECAP10HD}
 defOut -floorplan -netlist -routing ../Outputs/Filter.def
 saveDesign Filter.enc
 
