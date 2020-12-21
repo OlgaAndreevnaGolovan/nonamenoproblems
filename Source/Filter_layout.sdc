@@ -2,10 +2,6 @@
 set FCLK   5;                  #desired Fclk
 set UNCERT 5;                      #desired % from Fclk for clock uncertainty
 
-############GROUP PATH and PORTS for STA################
-group_path -name REGIN  -through [all_inputs]
-group_path -name REGOUT -to      [all_outputs]
-group_path -name INOUT  -through [all_inputs] -to [all_outputs]
 
 set INPUTPORTS_CLK  [remove_from_collection [all_inputs]  [get_ports {clk reset}]]; #to exclude from input_delay setting
 set OUTPUTPORTS_CLK [all_outputs]
