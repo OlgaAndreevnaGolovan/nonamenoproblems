@@ -63,16 +63,13 @@ set sprCreateIeStripeThreshold 1.0
 addStripe -skip_via_on_wire_shape Noshape -block_ring_top_layer_limit MET3 -max_same_layer_jog_length 6 -padcore_ring_bottom_layer_limit MET1 -set_to_set_distance 100 -skip_via_on_pin Standardcell -stacked_via_top_layer METTPL -padcore_ring_top_layer_limit MET3 -spacing 0.28 -merge_stripes_value 3.15 -layer MET2 -block_ring_bottom_layer_limit MET1 -width 3 -nets {VSS VDD} -stacked_via_bottom_layer MET1
 sroute -connect { blockPin padPin padRing corePin floatingStripe } -layerChangeRange { MET1 METTPL } -blockPinTarget { nearestTarget } -padPinPortConnect { allPort oneGeom } -padPinTarget { nearestTarget } -corePinTarget { firstAfterRowEnd } -floatingStripeTarget { blockring padring ring stripe ringpin blockpin followpin } -allowJogging 1 -crossoverViaLayerRange { MET1 METTPL } -nets { VSS VDD } -allowLayerChange 1 -blockPin useLef -targetViaLayerRange { MET1 METTPL }
 #Create PrePlace setup Timing Report
-redirect -quiet {set honorDomain [getAnalysisMode -honorClockDomains]} > /dev/null
 timeDesign -prePlace -idealClock -pathReports -drvReports -slackReports -numPaths 50 -prefix Filter_prePlace -outDir ../Reports
 # Place Standard Cells
 setPlaceMode -fp false
 placeDesign -inPlaceOpt
 #Create PreCTS setup Timing Report
-redirect -quiet {set honorDomain [getAnalysisMode -honorClockDomains]} > /dev/null
 timeDesign -preCTS -idealClock -pathReports -drvReports -slackReports -numPaths 50 -prefix Filter_preCTS -outDir ../Reports
 #Create PreCTS hold Timing Report
-redirect -quiet {set honorDomain [getAnalysisMode -honorClockDomains]} > /dev/null
 timeDesign -preCTS -hold -idealClock -pathReports -slackReports -numPaths 50 -prefix Filter_preCTS -outDir ../Reports
 #PreCTS Optimization
 setOptMode -fixCap true -fixTran true -fixFanoutLoad true
@@ -82,10 +79,8 @@ createClockTreeSpec -bufferList {BUHDX0 BUHDX1 BUHDX12 BUHDX2 BUHDX3 BUHDX4 BUHD
 setCTSMode -engine ck
 clockDesign -specFile Clock.ctstch -outDir clock_report -fixedInstBeforeCTS
 #Create PostCTS setup Timing Report
-redirect -quiet {set honorDomain [getAnalysisMode -honorClockDomains]} > /dev/null
 timeDesign -postCTS -pathReports -drvReports -slackReports -numPaths 50 -prefix Filter_postCTS -outDir ../Reports
 #Create PostCTS hold Timing Report
-redirect -quiet {set honorDomain [getAnalysisMode -honorClockDomains]} > /dev/null
 timeDesign -postCTS -hold -pathReports -slackReports -numPaths 50 -prefix Filter_postCTS -outDir ../Reports
 #PostCTS Optimization
 setOptMode -fixCap true -fixTran true -fixFanoutLoad true
@@ -114,10 +109,8 @@ setOptMode -fixCap false -fixTran false -fixFanoutLoad false
 optDesign -postRoute -incr
 optDesign -postRoute -hold -incr
 #Create PostRoute setup Timing Report
-redirect -quiet {set honorDomain [getAnalysisMode -honorClockDomains]} > /dev/null
 timeDesign -postRoute -pathReports -drvReports -slackReports -numPaths 50 -prefix Elliptic_postRoute -outDir ../Reports
 #Create PostRoute hold Timing Report
-redirect -quiet {set honorDomain [getAnalysisMode -honorClockDomains]} > /dev/null
 timeDesign -postRoute -hold -pathReports -slackReports -numPaths 50 -prefix Elliptic_postRoute -outDir ../Reports
 #SignOff
 getFillerMode -quiet
@@ -125,10 +118,8 @@ addFiller -cell FEED7HD FEED5HD FEED3HD FEED2HD FEED25HD FEED1HD FEED15HD FEED10
 setExtractRCMode -engine postRoute -effortLevel signoff
 extractRC
 #Create SignOff setup Timing Report
-redirect -quiet {set honorDomain [getAnalysisMode -honorClockDomains]} > /dev/null
 timeDesign -signoff -pathReports -drvReports -slackReports -numPaths 50 -prefix Elliptic_signOff -outDir ../Reports
 #Create SignOff hold Timing Report
-redirect -quiet {set honorDomain [getAnalysisMode -honorClockDomains]} > /dev/null
 timeDesign -signoff -hold -pathReports -slackReports -numPaths 50 -prefix Elliptic_signOff -outDir ../Reports
 #Verifications
 setVerifyGeometryMode -area { 0 0 0 0 } -minWidth true -minSpacing true -minArea true -sameNet true -short true -overlap true -offRGrid false -offMGrid true -mergedMGridCheck true -minHole true -implantCheck true -minimumCut true -minStep true -viaEnclosure true -antenna false -insuffMetalOverlap true -pinInBlkg false -diffCellViol true -sameCellViol false -padFillerCellsOverlap true -routingBlkgPinOverlap true -routingCellBlkgOverlap true -regRoutingOnly false -stackedViasOnRegNet false -wireExt true -useNonDefaultSpacing false -maxWidth true -maxNonPrefLength -1 -error 1000
